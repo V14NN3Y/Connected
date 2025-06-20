@@ -5,7 +5,7 @@ const EMAILJS_SERVICE_ID = 'service_0fldbr9';
 const EMAILJS_TEMPLATE_ID = 'template_9e1a2nc';
 const EMAILJS_PUBLIC_KEY = 'Y0DClbSBL4znqfbwb';
 
-(function(){
+(function () {
     if (typeof emailjs !== 'undefined' && emailjs.init) {
         emailjs.init(EMAILJS_PUBLIC_KEY);
     } else {
@@ -38,7 +38,7 @@ async function sendEmailWithCode(email, code, nom, prenom) {
 }
 
 function validateEmail(email) {
-    return true;
+    return email.endsWith('@epitech.eu');
 }
 
 // obtention de la date du jour
@@ -88,7 +88,7 @@ function downloadFile(filename, content) {
     document.body.removeChild(element);
 }
 
-document.getElementById('download').addEventListener('click', function() {
+document.getElementById('download').addEventListener('click', function () {
     const currentDate = getCurrentDate();
     const fileName = `${currentDate}_register.txt`;
     const fileContent = localStorage.getItem(fileName) || '';
@@ -118,7 +118,7 @@ function showSuccess(message) {
 }
 
 // génération du code quand on va cliquer
-document.getElementById('generateCodeBtn').addEventListener('click', async function() {
+document.getElementById('generateCodeBtn').addEventListener('click', async function () {
     const nom = document.getElementById('nom').value.trim();
     const prenom = document.getElementById('prenom').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -158,7 +158,7 @@ document.getElementById('generateCodeBtn').addEventListener('click', async funct
 });
 
 // vérification du code quand on clique
-document.getElementById('verifyCodeBtn').addEventListener('click', function() {
+document.getElementById('verifyCodeBtn').addEventListener('click', function () {
     const enteredCode = document.getElementById('codeInput').value.trim();
     const nom = document.getElementById('nom').value.trim();
     const prenom = document.getElementById('prenom').value.trim();
@@ -185,13 +185,13 @@ document.getElementById('verifyCodeBtn').addEventListener('click', function() {
 });
 
 // vérification du code quand on appuie sur la touche Entrée
-document.getElementById('codeInput').addEventListener('keypress', function(e) {
+document.getElementById('codeInput').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         document.getElementById('verifyCodeBtn').click();
     }
 });
 
-window.onload = function() {
+window.onload = function () {
     const textInputs = document.querySelectorAll('input[type="text"], input[type="email"]');
     textInputs.forEach(input => input.value = '');
 };
