@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification Étudiants EPITECH</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="e.png" alt="Logo d'EPITECH">
+        </div>
+
+        <form id="authenticate">
+            <div id="formFields">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" placeholder="Ex: ATTOLOU" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Ex: Marc" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Mail Epitech :</label>
+                    <input type="email" id="email" name="email" pattern=".*@epitech\.eu$" placeholder="prenom.nom@epitech.eu" required>
+                </div>
+            </div>
+
+            <button type="button" class="btn" id="generateCodeBtn">
+                Générer et envoyer le code
+            </button>
+        </form>
+
+        <div class="notification" id="notification">
+            📧 Code envoyé par email !<span id="generatedCode"></span>
+        </div>
+
+        <div class="code-section" id="codeSection">
+            <div class="form-group">
+                <label for="codeInput">Entrez le code reçu :</label>
+                <input type="text" id="codeInput" placeholder="Entrez le code à 6 chiffres" maxlength="6">
+            </div>
+            <button type="button" class="btn" id="verifyCodeBtn">
+                Vérifier le code
+            </button>
+        </div>
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Envoi du code en cours...</p>
+        </div>
+    </div>
+    <button type="button" class="buttn" id="download">
+        Download file
+    </button>
+    <script src="script.js"></script>
+
+</body>
+</html>
